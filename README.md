@@ -5,7 +5,7 @@ an open slot from a public page, pays a small confirmation fee via Stripe,
 and the booking is locked in — safely, even if two people try to grab the
 same slot at the same time.
 
-**Live demo:** _add your deployed URL here_
+**Live demo:** https://slot-sync-phi.vercel.app/
 **Booking page:** `/book/jordan` (after seeding — see below)
 
 ![screenshot placeholder](docs/screenshot.png)
