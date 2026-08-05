@@ -63,7 +63,7 @@ export function BookingPage() {
 
   return (
     <div className="container">
-      <h1>Book time with {username}</h1>
+      <h1>Book time with <span style={{ textTransform: "capitalize" }}>{username}</span></h1>
       {bookingResult === "cancelled" && (
         <p className="error">Payment was cancelled — your slot was not reserved.</p>
       )}
