@@ -67,7 +67,7 @@ export function Dashboard() {
               })}
             </div>
             <div className="ticket-meta">
-              {b.bookerName} · {b.bookerEmail}
+              <span style={{ textTransform: "capitalize" }}>{b.bookerName}</span> · {b.bookerEmail}
             </div>
             {b.status !== "CANCELLED" && (
               <button className="danger" onClick={() => handleCancel(b.id)} style={{ marginTop: 16 }}>
