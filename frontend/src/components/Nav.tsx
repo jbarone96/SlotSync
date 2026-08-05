@@ -11,7 +11,10 @@ export function Nav() {
 
   return (
     <nav className="nav">
-      <Link to="/" className="nav-brand">SlotSync</Link>
+      <Link to="/" className="nav-brand">
+        <img src="/favicon.svg" alt="" width="20" height="20" style={{ verticalAlign: "middle", marginRight: 8 }} />
+        SlotSync
+      </Link>
       <div className="nav-links">
         {isLoggedIn ? (
           <>
