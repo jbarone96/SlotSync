@@ -1,0 +1,305 @@
+/* ===== Design tokens ===== */
+:root {
+  --paper: #f8f7f3;
+  --paper-raised: #ffffff;
+  --ink: #1c1d22;
+  --ink-soft: #5b5d66;
+  --ink-faint: #9a9ca3;
+  --brass: #a8823c;
+  --brass-dark: #8a6b2e;
+  --teal: #1f4b4c;
+  --line: #dedad0;
+  --danger: #b14b3d;
+  --danger-soft: #f3e3e0;
+  --radius: 10px;
+  --font-display: "IBM Plex Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--brass); }
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+h1 { font-size: 32px; }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 600; }
+
+p { line-height: 1.55; color: var(--ink-soft); }
+
+/* ===== Nav: a boarding-pass strip ===== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.nav-brand {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  text-decoration: none;
+}
+.nav-brand::before { content: "✂ "; opacity: 0.6; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a {
+  color: var(--paper);
+  opacity: 0.85;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-button {
+  width: auto;
+  padding: 7px 14px;
+  font-size: 13px;
+  background: transparent;
+  border: 1px solid rgba(248, 247, 243, 0.35);
+  color: var(--paper);
+  margin: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.nav-button:hover { border-color: var(--paper); }
+
+/* ===== Cards ===== */
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+/* ===== Ticket stub — the signature element ===== */
+.ticket {
+  display: flex;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  position: relative;
+}
+.ticket-stub {
+  width: 64px;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  padding: 12px 0;
+}
+.ticket-perforation {
+  width: 0;
+  border-left: 2px dashed var(--line);
+  position: relative;
+}
+.ticket-perforation::before,
+.ticket-perforation::after {
+  content: "";
+  position: absolute;
+  left: -7px;
+  width: 14px;
+  height: 14px;
+  background: var(--paper);
+  border-radius: 50%;
+}
+.ticket-perforation::before { top: -7px; }
+.ticket-perforation::after { bottom: -7px; }
+.ticket-body {
+  flex: 1;
+  padding: 20px 24px;
+  position: relative;
+}
+.ticket-time {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+}
+.ticket-meta { font-size: 14px; color: var(--ink-soft); margin-top: 4px; }
+
+/* Rubber-stamp status badge */
+.stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1.5px solid currentColor;
+  transform: rotate(-3deg);
+}
+.stamp-confirmed { color: var(--teal); }
+.stamp-pending { color: var(--brass-dark); }
+.stamp-cancelled { color: var(--danger); text-decoration: line-through; }
+
+/* ===== Slot picker ===== */
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+.slot-button {
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper-raised);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink);
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.slot-button:hover { border-color: var(--brass); background: #fdfaf3; }
+.slot-button.selected { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ===== Form elements ===== */
+input {
+  font-family: var(--font-display);
+  font-size: 15px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  width: 100%;
+  margin-bottom: 12px;
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+input:focus {
+  outline: none;
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px rgba(168, 130, 60, 0.15);
+}
+
+button {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 11px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  width: 100%;
+  margin-bottom: 12px;
+  background: var(--paper-raised);
+  color: var(--ink);
+  cursor: pointer;
+}
+button.primary {
+  background: var(--brass);
+  color: #fff;
+  border: none;
+}
+button.primary:hover { background: var(--brass-dark); }
+button.primary:disabled { background: #d8c9a3; cursor: not-allowed; }
+button.danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  width: auto;
+}
+button.danger:hover { background: var(--danger); color: #fff; }
+
+.error {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* ===== Home page hero ===== */
+.hero {
+  text-align: center;
+  padding: 12px 0 8px;
+}
+.hero-mark {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass-dark);
+  border: 1px solid var(--brass);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+}
+
+/* ===== Field tooltips ===== */
+.field {
+  position: relative;
+  margin-bottom: 20px;
+}
+.field input { margin-bottom: 0; }
+
+.tooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  background: var(--danger);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  animation: tooltip-in 0.15s ease-out;
+}
+.tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 14px;
+  border: 5px solid transparent;
+  border-bottom-color: var(--danger);
+}
+
+@keyframes tooltip-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  .tooltip { animation: none; }
+}
