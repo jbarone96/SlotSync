@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Host {
+  id                 String    @id @default(uuid())
+  username           String    @unique
+  email              String    @unique
+  passwordHash       String
+  slotDurationMins   Int       @default(30)
+  // availability stored as JSON: { "mon": [["09:00","17:00"]], "tue": [...], ... }
+  // Simple to reason about for an MVP; a v2 could normalize this into its own table
+  // if hosts need per-slot overrides (holidays, one-off exceptions, etc.)
+  availability       Json
+  timezone           String    @default("America/New_York")
+  createdAt          DateTime  @default(now())
+  bookings           Booking[]
+}
+
+model Booking {
+  id              String   @id @default(uuid())
+  host            Host     @relation(fields: [hostId], references: [id])
+  hostId          String
+  bookerName      String
+  bookerEmail     String
+  startTime       DateTime
+  endTime         DateTime
+  status          BookingStatus @default(PENDING)
+  stripeSessionId String?  @unique
+  stripePaymentId String?
+  createdAt       DateTime @default(now())
+
+  // THE KEY LINE: this is what actually prevents double-booking.
+  // Two concurrent requests for the same host + startTime will race to insert,
+  // and the DB (not application code) rejects the second one with a unique
+  // constraint violation. Checking availability in application code first is
+  // NOT sufficient on its own — that's a classic check-then-act race condition.
+  @@unique([hostId, startTime])
+}
+
+enum BookingStatus {
+  PENDING    // created, awaiting Stripe payment confirmation via webhook
+  CONFIRMED  // Stripe webhook confirmed payment
+  CANCELLED
+}
