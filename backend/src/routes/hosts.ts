@@ -49,7 +49,7 @@ hostsRouter.get("/me/bookings", requireAuth, async (req: AuthedRequest, res, nex
 
 hostsRouter.post("/me/bookings/:id/cancel", requireAuth, async (req: AuthedRequest, res, next) => {
   try {
-    const booking = await prisma.booking.findUnique({ where: { id: req.params.id } });
+    const booking = await prisma.booking.findUnique({ where: { id: String(req.params.id) } });
     if (!booking || booking.hostId !== req.hostId) {
       throw new AppError("Booking not found", 404);
     }
