@@ -141,7 +141,7 @@ p { line-height: 1.55; color: var(--ink-soft); }
 .ticket-perforation::after { bottom: -7px; }
 .ticket-body {
   flex: 1;
-  padding: 20px 140px 20px 24px;
+  padding: 20px 24px;
   position: relative;
 }
 .ticket-time {
@@ -150,6 +150,18 @@ p { line-height: 1.55; color: var(--ink-soft); }
   font-weight: 500;
 }
 .ticket-meta { font-size: 14px; color: var(--ink-soft); margin-top: 4px; }
+
+.ticket-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ticket-header-row .ticket-time {
+  flex: 1;
+  min-width: 0;
+}
 
 /* Rubber-stamp status badge */
 .stamp {
@@ -168,17 +180,11 @@ p { line-height: 1.55; color: var(--ink-soft); }
 .stamp-pending { color: var(--brass-dark); }
 .stamp-cancelled { color: var(--danger); text-decoration: line-through; }
 
-/* Corner-pinned variant used on the dashboard ticket cards.
-   Smaller size/spacing than the base .stamp so even the longest
-   status word ("CONFIRMED"/"CANCELLED") fits without clipping
-   against .ticket's overflow:hidden edge. */
+/* Flex-safe corner variant used on dashboard ticket cards.
+   flex-shrink:0 keeps the badge at full size (never squeezed/clipped);
+   the sibling .ticket-time wraps into whatever room is left instead. */
 .stamp-corner {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: 10px;
-  padding: 3px 8px;
-  letter-spacing: 0.05em;
+  flex-shrink: 0;
   white-space: nowrap;
 }
 
