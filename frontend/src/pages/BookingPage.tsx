@@ -208,10 +208,6 @@ export function BookingPage() {
                 );
               })}
             </div>
-
-            <div className="calendar-legend">
-              <span className="calendar-day-dot" /> Available
-            </div>
           </div>
 
           <div className="calendar-divider" />
