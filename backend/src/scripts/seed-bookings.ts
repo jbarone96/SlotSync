@@ -1,6 +1,15 @@
+import 'dotenv/config';
 import { PrismaClient, BookingStatus } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
 
-const prisma = new PrismaClient();
+if (!process.env.DATABASE_URL) {
+  throw new Error(
+    'DATABASE_URL is not set. Check that backend/.env exists and contains a valid DATABASE_URL.'
+  );
+}
+
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const prisma = new PrismaClient({ adapter });
 
 // Helper to build a Date relative to "now" in days + a fixed hour/minute (ET-ish, naive).
 function relativeDate(daysFromNow: number, hour: number, minute: number = 0): Date {
