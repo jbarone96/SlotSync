@@ -54,17 +54,15 @@ export function Dashboard() {
           <div className="ticket-stub">SlotSync</div>
           <div className="ticket-perforation" />
           <div className="ticket-body">
-            <div className="ticket-header-row">
-              <div className="ticket-time">
-                {new Date(b.startTime).toLocaleString([], {
-                  weekday: "short",
-                  month: "short",
-                  day: "numeric",
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}
-              </div>
-              <span className={stampClass[b.status]}>{b.status}</span>
+            <span className={`${stampClass[b.status]} stamp-corner`}>{b.status}</span>
+            <div className="ticket-time">
+              {new Date(b.startTime).toLocaleString([], {
+                weekday: "short",
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+              })}
             </div>
             <div className="ticket-meta">
               <span style={{ textTransform: "capitalize" }}>{b.bookerName}</span> · {b.bookerEmail}

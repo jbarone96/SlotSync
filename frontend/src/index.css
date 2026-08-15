@@ -141,7 +141,7 @@ p { line-height: 1.55; color: var(--ink-soft); }
 .ticket-perforation::after { bottom: -7px; }
 .ticket-body {
   flex: 1;
-  padding: 20px 24px;
+  padding: 20px 110px 20px 24px;
   position: relative;
 }
 .ticket-time {
@@ -167,6 +167,12 @@ p { line-height: 1.55; color: var(--ink-soft); }
 .stamp-confirmed { color: var(--teal); }
 .stamp-pending { color: var(--brass-dark); }
 .stamp-cancelled { color: var(--danger); text-decoration: line-through; }
+
+.stamp-corner {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+}
 
 /* ===== Slot picker ===== */
 .slot-grid {
