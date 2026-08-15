@@ -308,17 +308,23 @@ button.danger:hover { background: var(--danger); color: #fff; }
 
 .container-wide {
   max-width: 1040px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .booking-card {
   display: flex;
   padding: 0;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .calendar-panel {
   flex: 1 1 56%;
   padding: 28px;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .calendar-header {
@@ -352,6 +358,7 @@ button.danger:hover { background: var(--danger); color: #fff; }
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .calendar-weekdays,
@@ -443,6 +450,8 @@ button.danger:hover { background: var(--danger); color: #fff; }
   background: #fcfaf5;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .times-empty {
@@ -465,7 +474,7 @@ button.danger:hover { background: var(--danger); color: #fff; }
   gap: 8px;
   overflow-y: auto;
   padding-right: 4px;
-  max-height: 380px;
+  max-height: 480px;
 }
 
 .times-slot {
@@ -486,8 +495,21 @@ button.danger:hover { background: var(--danger); color: #fff; }
 }
 
 @media (max-width: 640px) {
+  .container-wide {
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   .booking-card {
     flex-direction: column;
+  }
+  .calendar-panel,
+  .times-panel {
+    padding: 16px;
+  }
+  .calendar-weekdays,
+  .calendar-grid {
+    gap: 2px;
   }
   .calendar-divider {
     width: auto;
