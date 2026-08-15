@@ -452,7 +452,6 @@ button.danger:hover { background: var(--danger); color: #fff; }
   background: #fcfaf5;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .times-empty {
@@ -475,6 +474,8 @@ button.danger:hover { background: var(--danger); color: #fff; }
   gap: 8px;
   overflow-y: auto;
   padding-right: 4px;
+  flex: 1;
+  min-height: 0;
 }
 
 .times-slot {
