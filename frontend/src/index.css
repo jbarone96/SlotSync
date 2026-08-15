@@ -306,6 +306,11 @@ button.danger:hover { background: var(--danger); color: #fff; }
 /* --- Calendar booking UI --- */
 /* Tokens: brass #B08D57, teal #2F6F6B, ink #1C1B19, muted #8A8578, hairline #E5DFD1 */
 
+/* Widens just this page without touching the shared .container used elsewhere */
+.container-wide {
+  max-width: 1040px;
+}
+
 .booking-card {
   display: flex;
   padding: 0;
@@ -344,6 +349,10 @@ button.danger:hover { background: var(--danger); color: #fff; }
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .calendar-weekdays,

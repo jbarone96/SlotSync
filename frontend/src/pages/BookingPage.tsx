@@ -65,7 +65,6 @@ export function BookingPage() {
       .finally(() => setLoading(false));
   }, [username]);
 
-  // Group slots by local date so the calendar can mark which days have openings.
   const slotsByDate = useMemo(() => {
     const map = new Map<string, Slot[]>();
     for (const slot of slots) {
@@ -138,7 +137,7 @@ export function BookingPage() {
   }
 
   return (
-    <div className="container">
+    <div className="container container-wide">
       <h1>
         Book time with <span style={{ textTransform: "capitalize" }}>{username}</span>
       </h1>
