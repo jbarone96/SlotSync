@@ -545,3 +545,17 @@ button.danger:hover { background: var(--danger); color: #fff; }
     max-height: 280px;
   }
 }
+
+.test-card-note {
+  font-size: 13px;
+  color: var(--brass-dark);
+  background: #fdf6e8;
+  border: 1px dashed var(--brass);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 0 0 12px;
+}
+.test-card-note strong {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}

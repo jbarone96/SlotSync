@@ -8,7 +8,6 @@ same slot at the same time.
 **Live demo:** https://slot-sync-phi.vercel.app/
 **Booking page:** `/book/jordan` (after seeding — see below)
 
-![screenshot placeholder](docs/screenshot.png)
 
 ## Why I built this
 
@@ -122,8 +121,26 @@ npm install
 npm run dev               # http://localhost:5173
 ```
 
-Visit `http://localhost:5173/book/jordan` to try the booking flow, or
-`http://localhost:5173/login` to view the host dashboard.
+Visit `https://slot-sync-phi.vercel.app/book/jordan` to try the booking flow, or
+`https://slot-sync-phi.vercel.app/login` to view the host dashboard.
+
+## Testing payments
+
+This app uses Stripe in test mode. To go through the full booking → payment
+→ webhook-confirmation flow without a real card, use Stripe's standard test
+card at checkout:
+
+| Field | Value |
+|---|---|
+| Card number | `4242 4242 4242 4242` |
+| Expiry | any future date (e.g. `12/34`) |
+| CVC | any 3 digits (e.g. `123`) |
+| ZIP | any 5 digits (e.g. `12345`) |
+
+This card always succeeds and will trigger the real webhook-driven
+confirmation flow (`checkout.session.completed` → booking flips from
+`PENDING` to `CONFIRMED`). To see the decline/failure path instead, use
+`4000 0000 0000 0002`.
 
 ### Tests
 

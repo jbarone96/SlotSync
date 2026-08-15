@@ -264,6 +264,9 @@ export function BookingPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <p className="test-card-note">
+            Demo mode — use test card <strong>4242 4242 4242 4242</strong>, any future expiry, any CVC.
+          </p>
           <button className="primary" onClick={handleBook} disabled={submitting || !name || !email}>
             {submitting ? "Redirecting to payment..." : "Confirm & Pay $1.00"}
           </button>
