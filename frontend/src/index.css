@@ -141,7 +141,7 @@ p { line-height: 1.55; color: var(--ink-soft); }
 .ticket-perforation::after { bottom: -7px; }
 .ticket-body {
   flex: 1;
-  padding: 20px 110px 20px 24px;
+  padding: 20px 140px 20px 24px;
   position: relative;
 }
 .ticket-time {
@@ -168,10 +168,18 @@ p { line-height: 1.55; color: var(--ink-soft); }
 .stamp-pending { color: var(--brass-dark); }
 .stamp-cancelled { color: var(--danger); text-decoration: line-through; }
 
+/* Corner-pinned variant used on the dashboard ticket cards.
+   Smaller size/spacing than the base .stamp so even the longest
+   status word ("CONFIRMED"/"CANCELLED") fits without clipping
+   against .ticket's overflow:hidden edge. */
 .stamp-corner {
   position: absolute;
   top: 20px;
   right: 24px;
+  font-size: 10px;
+  padding: 3px 8px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 /* ===== Slot picker ===== */
