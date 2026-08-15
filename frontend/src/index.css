@@ -306,7 +306,6 @@ button.danger:hover { background: var(--danger); color: #fff; }
 /* --- Calendar booking UI --- */
 /* Tokens: brass #B08D57, teal #2F6F6B, ink #1C1B19, muted #8A8578, hairline #E5DFD1 */
 
-/* Widens just this page without touching the shared .container used elsewhere */
 .container-wide {
   max-width: 1040px;
 }
@@ -315,7 +314,6 @@ button.danger:hover { background: var(--danger); color: #fff; }
   display: flex;
   padding: 0;
   overflow: hidden;
-  height: 560px;
 }
 
 .calendar-panel {
@@ -453,7 +451,6 @@ button.danger:hover { background: var(--danger); color: #fff; }
   background: #fcfaf5;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .times-empty {
@@ -476,8 +473,7 @@ button.danger:hover { background: var(--danger); color: #fff; }
   gap: 8px;
   overflow-y: auto;
   padding-right: 4px;
-  flex: 1;
-  min-height: 0;
+  max-height: 380px;
 }
 
 .times-slot {
@@ -490,6 +486,7 @@ button.danger:hover { background: var(--danger); color: #fff; }
   font-size: 13px;
   cursor: pointer;
   text-align: left;
+  flex-shrink: 0;
 }
 
 .times-slot:hover {
@@ -509,5 +506,8 @@ button.danger:hover { background: var(--danger); color: #fff; }
       transparent 6px 14px
     );
     margin: 0;
+  }
+  .times-list {
+    max-height: 280px;
   }
 }
